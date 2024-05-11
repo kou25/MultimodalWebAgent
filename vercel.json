@@ -1,0 +1,26 @@
+{
+  "build": {
+    "env": {
+      "POETRY_VERSION": "1.8.3",
+      "PYTHONDONTWRITEBYTECODE": 1,
+      "OPENAI_API_KEY": "sk-proj-uMadJUPy1NyUyMaZrUhrT3BlbkFJRFwKTwyn2Sd5CKJSDiRX",
+      "OPENAI_MODEL": "gpt-3.5-turbo"
+    }
+  },
+  "builds": [
+    {
+      "src": "poetry run webagent",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "test/test_webdriver.py"
+    }
+  ]
+}
